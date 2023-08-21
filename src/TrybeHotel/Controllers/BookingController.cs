@@ -11,7 +11,9 @@ namespace TrybeHotel.Controllers
 {
     [ApiController]
     [Route("booking")]
-  
+    [Authorize(Policy = "Client")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     public class BookingController : Controller
     {
         private readonly IBookingRepository _repository;
@@ -21,18 +23,45 @@ namespace TrybeHotel.Controllers
         }
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [Authorize(Policy = "Client")]
-        public IActionResult Add([FromBody] BookingDtoInsert bookingInsert){
-            throw new NotImplementedException();
+        public IActionResult Add([FromBody] BookingDtoInsert bookingInsert)
+        {
+            try
+            {
+                var token = HttpContext.User.Identity as ClaimsIdentity;
+                var email = token?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+                var booking = _repository.Add(bookingInsert, email!);
+                return Created("", booking);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new ErrorResponse { Message = ex.Message });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new ErrorResponse { Message = ex.Message });
+            }
         }
 
-
         [HttpGet("{Bookingid}")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [Authorize(Policy = "Client")]
-        public IActionResult GetBooking(int Bookingid){
-            throw new NotImplementedException();
+        public IActionResult GetBooking(int Bookingid)
+        {
+            try
+            {
+                var token = HttpContext.User.Identity as ClaimsIdentity;
+                var email = token?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+                var booking = _repository.GetBooking(Bookingid, email!);
+                return Ok(booking);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new ErrorResponse { Message = ex.Message });
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Unauthorized();
+            }
         }
     }
 }
