@@ -1,5 +1,5 @@
 # 🏨 Projeto Trybe Hotel
-Este projeto e uma API back-end desenvolvida em C#, cujo objetivo é criar um sistema de gerenciamento hoteleiro. Oferecendo funcionalidades para login e registro de usuários, gerenciar cidades, hotéis, quartos e reservas, além de conter um serviço externo para calcular os hotéis cadastrados mais próximos de você. Possui um sistema de autenticação onde existem endpoints que requerem que o usuário tenha o token recebido no login, e forneça o token na requisição, alguns necessitam permissões de Administrador e Cliente.
+Este projeto é uma API back-end desenvolvida em C#, cujo objetivo é criar um sistema de gerenciamento hoteleiro. Oferecendo funcionalidades para login e registro de usuários, gerenciar cidades, hotéis, quartos e reservas, além de conter um serviço externo para calcular os hotéis cadastrados mais próximos de você. Possui um sistema de autenticação onde existem endpoints que requerem que o usuário tenha o token recebido no login, e forneça o token na requisição, alguns necessitam permissões de Administrador e Cliente.
 <br>
 
 ## 📝 Aprendizados com este projeto
