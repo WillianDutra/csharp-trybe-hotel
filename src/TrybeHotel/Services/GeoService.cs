@@ -12,6 +12,8 @@ namespace TrybeHotel.Services
         public GeoService(HttpClient client)
         {
             _client = client;
+            client.DefaultRequestHeaders.Add("User-Agent", "TrybeHotel/v1.0");
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
         }
 
         public async Task<object> GetGeoStatus()
@@ -25,7 +27,6 @@ namespace TrybeHotel.Services
         {
             string URL = $"https://nominatim.openstreetmap.org/search?street={geoDto.Address}&city={geoDto.City}&country=Brazil&state={geoDto.State}&format=json&limit=1";
             var response = await _client.GetAsync(URL);
-
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadFromJsonAsync<GeoDtoResponse[]>();
@@ -85,6 +86,5 @@ namespace TrybeHotel.Services
         {
             return degree * Math.PI / 180;
         }
-
     }
 }

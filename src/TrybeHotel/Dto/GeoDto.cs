@@ -9,8 +9,8 @@ namespace TrybeHotel.Dto
 
    public class GeoDtoResponse
    {
-      public string? lat { get; set; }
-      public string? lon { get; set; }
+      public string lat { get; set; }
+      public string lon { get; set; }
    }
 
    public class GeoDtoHotelResponse

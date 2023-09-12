@@ -29,7 +29,6 @@ namespace TrybeHotel.Controllers
             return Ok(response);
         }
 
-        // 12. Desenvolva o endpoint GET /geo/address
         [HttpGet]
         [Route("address")]
         public async Task<IActionResult> GetHotelsByLocation([FromBody] GeoDto address)
