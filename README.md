@@ -10,8 +10,6 @@ Este projeto e uma API back-end desenvolvida em C#, cujo objetivo é criar um si
 - JWT (Json Web Token)
 - Azure Data Studio
 
-<br>
-
 # 👩‍💻 Endpoints
 
 ### Login
@@ -37,7 +35,6 @@ Retorna um token JWT de autenticação caso login ocorra com sucesso:
 
 </details>
 
-<br>
 <hr>
 
 ### User
@@ -92,7 +89,6 @@ Retorna os dados do novo usuario cadastrado:
 
 </details>
 
-<br>
 <hr>
 
 ### City
@@ -161,7 +157,6 @@ Retorna a cidade atualizada no banco de dados:
 
 </details>
 
-<br>
 <hr>
 
 ### Hotel
@@ -216,7 +211,6 @@ Retorna todas os hoteis cadastrados no banco de dados:
 
 </details>
 
-<br>
 <hr>
 
 ### Room
@@ -293,7 +287,6 @@ Retorna apenas um status de sucesso caso o quarto seja deletado.
 
 </details>
 
-<br>
 <hr>
 
 ### Booking
@@ -373,7 +366,6 @@ Retorna os detalhes da reserva criada:
 
 </details>
 
-<br>
 <hr>
 
 ### GeoLocation
